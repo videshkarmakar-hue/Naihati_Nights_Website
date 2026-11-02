@@ -1,0 +1,736 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Naihati Nights | Next-Gen Reactive Festival Guidance Engine</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Space Grotesk & Syne -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Syne:wght@700;800;900&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&amp;display=swap" rel="stylesheet" class=""><link href="https://fonts.cdnfonts.com/css/milker" rel="stylesheet" class=""><link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&amp;display=swap" rel="stylesheet" class="">
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#010310',
+            cyanAccent: '#23A9BD',
+            purpleNeon: '#8a2be2',
+            magentaNeon: '#d91b9b',
+            glassBg: 'rgba(10, 14, 28, 0.65)',
+            glassCard: 'rgba(18, 12, 34, 0.45)',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            syne: ['"Syne"', 'sans-serif'],
+          },
+          animation: {
+            'spin-slow': 'spin 18s linear infinite',
+            'pulse-subtle': 'pulse 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'flow-glow': 'flowGlow 8s ease-in-out infinite alternate',
+            'blob-float': 'blobFloat 10s ease-in-out infinite alternate',
+            'blob-float-reverse': 'blobFloatReverse 12s ease-in-out infinite alternate',
+            'marquee-scroll': 'marquee 25s linear infinite',
+          },
+          keyframes: {
+            flowGlow: {
+              '0%': { filter: 'drop-shadow(0 0 25px rgba(35,169,189,0.35)) hue-rotate(0deg)' },
+              '100%': { filter: 'drop-shadow(0 0 50px rgba(217,27,155,0.5)) hue-rotate(30deg)' },
+            },
+            blobFloat: {
+              '0%': {
+                transform: 'translateY(0px) rotate(0deg) scale(1)',
+                borderRadius: '50% 50% 40% 60% / 60% 40% 60% 40%'
+              },
+              '50%': {
+                transform: 'translateY(-18px) rotate(6deg) scale(1.04)',
+                borderRadius: '42% 58% 65% 35% / 45% 55% 45% 55%'
+              },
+              '100%': {
+                transform: 'translateY(12px) rotate(-5deg) scale(0.97)',
+                borderRadius: '58% 42% 38% 62% / 55% 45% 55% 45%'
+              }
+            },
+            blobFloatReverse: {
+              '0%': {
+                transform: 'translateY(0px) rotate(0deg) scale(1)',
+                borderRadius: '60% 40% 50% 50% / 50% 60% 40% 50%'
+              },
+              '50%': {
+                transform: 'translateY(16px) rotate(-8deg) scale(1.03)',
+                borderRadius: '50% 50% 40% 60% / 60% 40% 60% 40%'
+              },
+              '100%': {
+                transform: 'translateY(-14px) rotate(7deg) scale(0.98)',
+                borderRadius: '45% 55% 65% 35% / 40% 50% 50% 60%'
+              }
+            },
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom CSS Styling -->
+<style data-purpose="typography">
+    .text-stroke-watermark {
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.08);
+      color: transparent;
+      user-select: none;
+    }
+    .text-stroke-watermark-lg {
+      -webkit-text-stroke: 2px rgba(255, 255, 255, 0.07);
+      color: transparent;
+      user-select: none;
+    }
+  </style>
+<style data-purpose="fluid-artwork">
+    /* High visual fidelity CSS fluid 3D neon ribbons replicating organic morphing shapes */
+    .fluid-sculpture-hero {
+      position: relative;
+      background: radial-gradient(circle at 40% 40%, #ff2bd6 0%, #7b2cbf 35%, #23A9BD 70%, transparent 85%);
+      filter: blur(1.5px) contrast(135%) brightness(1.15);
+      box-shadow: 0 0 90px rgba(123, 44, 191, 0.55), inset 0 0 70px rgba(35, 169, 189, 0.65);
+      border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+      animation: blobFloat 9s ease-in-out infinite alternate;
+      will-change: transform, border-radius;
+    }
+    .fluid-sculpture-hero::before {
+      content: '';
+      position: absolute;
+      inset: -15px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(35,169,189,0.85), rgba(220,38,127,0.75), rgba(138,43,226,0.9));
+      filter: blur(28px);
+      opacity: 0.8;
+      z-index: -1;
+    }
+    .fluid-sculpture-about {
+      position: relative;
+      background: linear-gradient(135deg, #23A9BD 0%, #8a2be2 50%, #d91b9b 100%);
+      filter: blur(1px) contrast(125%) brightness(1.1);
+      box-shadow: 0 0 100px rgba(138, 43, 226, 0.65), inset 0 0 60px rgba(255, 43, 214, 0.5);
+      border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+      animation: blobFloatReverse 11s ease-in-out infinite alternate;
+      will-change: transform, border-radius;
+    }
+    .fluid-sculpture-about::before {
+      content: '';
+      position: absolute;
+      inset: -15px;
+      border-radius: inherit;
+      background: radial-gradient(circle at 50% 50%, rgba(35,169,189,0.7), rgba(217,27,155,0.7));
+      filter: blur(24px);
+      opacity: 0.7;
+      z-index: -1;
+    }
+    .fluid-highlight-layer {
+      background: radial-gradient(circle at 65% 25%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 45%);
+    }
+
+    /* Glassmorphism Interactive Hover Glow */
+    .glass-reactive {
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    }
+    .glass-reactive:hover {
+      box-shadow: 0 12px 40px -10px rgba(35, 169, 189, 0.35), 0 0 25px rgba(217, 27, 155, 0.2);
+    }
+    .btn-reactive-cyan {
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .btn-reactive-cyan:hover {
+      box-shadow: 0 0 25px #23A9BD, 0 0 50px rgba(35, 169, 189, 0.4);
+      transform: translateY(-2px) scale(1.02);
+    }
+  </style>
+<!-- END: Custom CSS Styling -->
+</head>
+<body class="bg-obsidian text-slate-200 font-sans antialiased selection:bg-cyanAccent selection:text-black overflow-x-hidden relative">
+<!-- BEGIN: Reactive WebGL Shader Background Canvas -->
+<!-- STITCH_SHADER_START:ANIMATION_18 class="fixed inset-0 w-full h-full pointer-events-none opacity-85 z-0" -->
+<div class="fixed inset-0 w-full h-full pointer-events-none opacity-85 z-0" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_18" style="display:block;width:100%;height:100%" width="1280" height="4607"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_18');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+// Simplex noise / organic flow helper functions
+vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+
+float snoise(vec2 v) {
+    const vec4 C = vec4(0.211324865405187,  // (3.0-sqrt(3.0))/6.0
+                        0.366025403784439,  // 0.5*(sqrt(3.0)-1.0)
+                       -0.577350269189626,  // -1.0 + 2.0 * C.x
+                        0.024390243902439); // 1.0 / 41.0
+    vec2 i  = floor(v + dot(v, C.yy));
+    vec2 x0 = v -   i + dot(i, C.xx);
+    vec2 i1;
+    i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+    vec4 x12 = x0.xyxy + C.xxzz;
+    x12.xy -= i1;
+    i = mod289(i);
+    vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
+        + i.x + vec3(0.0, i1.x, 1.0 ));
+    vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+    m = m*m;
+    m = m*m;
+    vec3 x = 2.0 * fract(p * C.www) - 1.0;
+    vec3 h = abs(x) - 0.5;
+    vec3 ox = floor(x + 0.5);
+    vec3 a0 = x - ox;
+    m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
+    vec3 g;
+    g.x  = a0.x  * x0.x  + h.x  * x0.y;
+    g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+    return 130.0 * dot(m, g);
+}
+
+void main() {
+    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+    vec2 mouse = u_mouse.xy / u_resolution.xy;
+    if (u_mouse.x <= 0.0 && u_mouse.y <= 0.0) {
+        mouse = vec2(0.7, 0.35);
+    }
+    
+    // Correct aspect ratio
+    float aspect = u_resolution.x / u_resolution.y;
+    vec2 p = uv;
+    p.x *= aspect;
+    vec2 mp = mouse;
+    mp.x *= aspect;
+
+    float t = u_time * 0.28;
+
+    // Multi-octave organic reactive flow
+    float n1 = snoise(p * 1.4 + vec2(t * 0.4, -t * 0.3));
+    float n2 = snoise(p * 2.8 - vec2(t * 0.6, t * 0.2) + vec2(n1 * 0.8));
+    float n3 = snoise(p * 4.5 + vec2(n2 * 0.5, t * 0.5));
+
+    // Mouse proximity ripple & distortion
+    float distMouse = length(p - mp);
+    float mouseInfluence = smoothstep(0.9, 0.0, distMouse) * 0.45;
+    float reactiveWarp = n2 + mouseInfluence * sin(distMouse * 18.0 - u_time * 3.0);
+
+    // Color definitions based on prompt palette:
+    // Primary #010310 (Obsidian/Navy base)
+    // Secondary #23A9BD (Vivid Reactive Cyan)
+    // Accent #d9248f (Deep Magenta/Neon Purple from the fluid reference)
+    vec3 colBg = vec3(0.004, 0.012, 0.063);       // #010310
+    vec3 colCyan = vec3(0.137, 0.663, 0.741);     // #23A9BD
+    vec3 colMagenta = vec3(0.851, 0.141, 0.561);  // #d9248f
+    vec3 colDeepPurple = vec3(0.24, 0.05, 0.45);  // Deep violet glow
+    vec3 colElectricGlow = vec3(0.35, 0.85, 0.98);
+
+    // Fluid blending calculation
+    float glow1 = smoothstep(-0.4, 0.8, reactiveWarp);
+    float glow2 = smoothstep(0.1, 0.9, n3 + mouseInfluence * 0.6);
+
+    vec3 finalColor = colBg;
+    finalColor = mix(finalColor, colDeepPurple, smoothstep(0.8, 0.1, distMouse * 1.2) * 0.65);
+    finalColor += colMagenta * glow1 * 0.35 * smoothstep(1.2, 0.0, length(uv - vec2(0.85, 0.3)));
+    finalColor += colCyan * glow2 * 0.45 * smoothstep(1.3, 0.0, length(uv - vec2(0.2, 0.7)));
+
+    // Interactive mouse cyan aura
+    finalColor += colElectricGlow * (mouseInfluence * 0.65);
+
+    // Subtle edge vignette
+    float vignette = uv.x * uv.y * (1.0 - uv.x) * (1.0 - uv.y);
+    finalColor *= clamp(14.0 * vignette, 0.3, 1.0);
+
+    gl_FragColor = vec4(finalColor, 0.92);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_18 -->
+<!-- END: Reactive WebGL Shader Background Canvas -->
+<div class="relative z-10">
+<!-- BEGIN: TopHeader -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-obsidian/75 border-b border-white/5">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group" href="#">
+<span class="w-3.5 h-3.5 rounded-full bg-cyanAccent shadow-[0_0_14px_#23A9BD] group-hover:scale-125 transition-transform duration-300"></span>
+<span class="font-display font-black text-xl tracking-[0.25em] text-white group-hover:text-cyanAccent transition-colors">
+          NAIHATI<span class="text-white/40">NIGHTS</span>
+</span>
+</a>
+<!-- Center Navigation Links -->
+<nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-slate-300 uppercase"><a class="text-white hover:text-cyanAccent transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-cyanAccent after:scale-x-100 after:transition-transform" href="#home">Home</a>
+<a class="hover:text-cyanAccent transition-colors relative hover:after:content-[''] hover:after:absolute hover:after:-bottom-1 hover:after:left-0 hover:after:w-full hover:after:h-0.5 hover:after:bg-cyanAccent" href="#about">About</a>
+<a class="hover:text-cyanAccent transition-colors relative hover:after:content-[''] hover:after:absolute hover:after:-bottom-1 hover:after:left-0 hover:after:w-full hover:after:h-0.5 hover:after:bg-cyanAccent" href="#capabilities">Services</a>
+<a class="hover:text-cyanAccent transition-colors relative hover:after:content-[''] hover:after:absolute hover:after:-bottom-1 hover:after:left-0 hover:after:w-full hover:after:h-0.5 hover:after:bg-cyanAccent" href="#download">Downloads</a>
+<a class="hover:text-cyanAccent transition-colors relative hover:after:content-[''] hover:after:absolute hover:after:-bottom-1 hover:after:left-0 hover:after:w-full hover:after:h-0.5 hover:after:bg-cyanAccent" href="#developer">Developer</a></nav>
+<!-- Right CTA Pill Button -->
+<div class="flex items-center gap-4">
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-black text-xs font-semibold tracking-wider transition-all duration-300 border border-white/20 hover:border-white shadow-[0_0_20px_rgba(35,169,189,0.2)] hover:shadow-[0_0_30px_rgba(35,169,189,0.5)] active:scale-95" download="" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="">START DOWNLOAD</span>
+<svg class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
+</svg>
+</a>
+</div>
+</div>
+</header>
+<!-- END: TopHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative min-h-screen pt-32 pb-20 px-6 flex flex-col justify-center overflow-hidden" id="home">
+<!-- Atmospheric Background Ambient Glows -->
+<div class="absolute -top-40 -right-40 w-[620px] h-[620px] bg-purpleNeon/25 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="absolute top-1/3 -left-40 w-[500px] h-[500px] bg-cyanAccent/15 rounded-full blur-[130px] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+<!-- Hero Left Content -->
+<div class="lg:col-span-7 space-y-7">
+
+<h1 class="text-5xl sm:text-7xl xl:text-8xl font-black font-syne tracking-tight text-white leading-none" style="font-family: &quot;Gondens DEMO&quot;, Gondens, Syne, &quot;Cinzel Decorative&quot;, sans-serif; letter-spacing: 0.05em; text-transform: uppercase;">NAIHATI <br class=""><span class="tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-white/60 drop-shadow-[0_0_35px_rgba(255,255,255,0.25)]">NIGHTS</span></h1>
+<!-- Hero Action Dual-Segmented Reactive Pill Button -->
+<div class="pt-3 flex flex-wrap items-center gap-4">
+<a class="group inline-flex items-center bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyanAccent/70 p-1.5 rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(217,27,155,0.25)] hover:shadow-[0_0_35px_rgba(35,169,189,0.4)]" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="px-6 py-2.5 text-xs font-bold tracking-widest uppercase text-white group-hover:text-cyanAccent transition-colors">
+              DOWNLOAD APK
+            </span>
+<div class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-cyanAccent group-hover:text-black shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+<svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</a>
+</div>
+<div class="pt-2 flex items-center gap-2 text-xs font-mono tracking-wider text-slate-400 uppercase">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyanAccent opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-cyanAccent shadow-[0_0_8px_#23A9BD]"></span>
+</span>
+<span class="">Crafted by <strong class="text-white font-bold tracking-widest hover:text-cyanAccent transition-colors cursor-pointer">VIDESH KARMAKAR</strong></span>
+</div>
+</div>
+<!-- Hero Right Visual: Spectacular 3D Neon Fluid Sculpture -->
+<div class="lg:col-span-5 relative flex items-center justify-center">
+<!-- Vertical Step Indicator Line on right edge -->
+<div class="absolute -right-4 hidden lg:flex flex-col items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
+<span class="w-1 h-8 bg-gradient-to-b from-white to-transparent rounded-full"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+</div>
+<!-- 3D Neon Ribbon Art Container with Morphing & Glow -->
+<div class="relative w-80 h-80 sm:w-96 sm:h-96 md:w-[420px] md:h-[420px] flex items-center justify-center animate-flow-glow">
+<div class="fluid-sculpture-hero w-full h-full relative overflow-hidden transition-transform duration-700 hover:scale-105 cursor-pointer">
+<!-- Glossy Highlight Reflections -->
+<div class="fluid-highlight-layer absolute inset-0"></div>
+<!-- Concentric dynamic fluid arcs -->
+<div class="absolute inset-4 rounded-[45%_55%_65%_35%] border-2 border-cyan-300/40 transform rotate-12 transition-transform duration-1000"></div>
+<div class="absolute inset-10 rounded-[55%_45%_40%_60%] border border-magentaNeon/50 transform -rotate-6 transition-transform duration-1000"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Hero Bottom Bar: Socials & Rotating Scroll Indicator -->
+
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: AboutSection -->
+<section class="relative py-28 px-6 overflow-hidden" id="about">
+<!-- Huge Watermark "ABOUT" Outline Typography in Background -->
+<div class="absolute top-10 right-4 lg:right-16 text-stroke-watermark-lg font-syne text-[110px] sm:text-[180px] lg:text-[230px] font-black leading-none pointer-events-none select-none z-0 opacity-40">
+      ABOUT
+    </div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+<!-- Left: Fluid 3D Neon Iridescent Splash Sculpture -->
+<div class="lg:col-span-6 flex justify-center items-center">
+<div class="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[440px] lg:h-[440px] group cursor-pointer">
+<!-- Fluid sculpture organic wave with responsive morphing -->
+<div class="fluid-sculpture-about w-full h-full relative overflow-hidden transition-transform duration-700 group-hover:scale-105">
+<div class="w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/40 via-transparent to-black/60 rounded-inherit"></div>
+</div>
+<!-- Orbiting highlight ring -->
+<div class="absolute inset-0 rounded-[40%_60%_50%_50%] border-2 border-white/20 transform rotate-45 scale-95 pointer-events-none group-hover:border-cyanAccent/50 transition-colors"></div>
+</div>
+</div>
+<!-- Right: Content & Overview -->
+<div class="lg:col-span-6 space-y-6">
+<div class="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-[0.25em] text-cyanAccent uppercase">
+<span class="w-1.5 h-1.5 rounded-full bg-cyanAccent shadow-[0_0_8px_#23A9BD]"></span>
+<span class="">WHO WE ARE</span>
+</div>
+<h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-syne tracking-tight leading-[1.15] text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300 drop-shadow-[0_0_35px_rgba(255,255,255,0.25)]" style="font-family: Montserrat, sans-serif; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1.15; font-weight: 800;">Providing comprehensive offline guidance and reactive navigation tailored for festival pilgrims.</h2>
+<!-- Action Pill -->
+<div class="pt-4">
+<a class="inline-flex items-center bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyanAccent p-1.5 rounded-full transition-all group shadow-[0_0_20px_rgba(35,169,189,0.15)] hover:shadow-[0_0_25px_rgba(35,169,189,0.35)]" href="#capabilities">
+<span class="px-5 py-2 text-xs font-bold tracking-widest uppercase text-white group-hover:text-cyanAccent transition-colors">
+              EXPLORE FEATURES
+            </span>
+<div class="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center group-hover:bg-cyanAccent group-hover:scale-105 transition-all">
+<svg class="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</a>
+</div>
+</div>
+</div>
+<!-- Section index indicator: 01 -->
+<div class="max-w-7xl mx-auto mt-20 flex items-center justify-end gap-3 text-xs font-mono text-white/40">
+<span class="text-cyanAccent font-bold">01</span>
+<span class="w-12 h-[1px] bg-cyanAccent/50"></span>
+<span class="w-4 h-[1px] bg-white/10"></span>
+<span class="w-4 h-[1px] bg-white/10"></span>
+</div>
+</section><section class="relative py-28 px-6" id="developer">
+<div class="max-w-7xl mx-auto">
+<!-- Section header -->
+<div class="text-center max-w-xl mx-auto mb-16 space-y-2">
+<span class="text-xs font-mono font-bold tracking-[0.25em] text-cyanAccent uppercase">
+          GET IN TOUCH
+        </span>
+<h2 class="text-3xl sm:text-5xl font-syne font-bold text-white" style="font-family: Montserrat, sans-serif; letter-spacing: -0.02em;">
+          Architect &amp; Developer Console
+        </h2>
+</div>
+<div class="max-w-4xl mx-auto w-full"><div class="bg-[#030919]/80 backdrop-blur-xl border border-cyan-300/40 hover:border-cyanAccent/70 p-8 sm:p-10 lg:p-12 rounded-3xl flex flex-col justify-between relative overflow-hidden group shadow-[0_0_35px_rgba(35,169,189,0.25)] hover:shadow-[0_0_50px_rgba(35,169,189,0.4)] transition-all duration-500"><div class="absolute -top-24 -right-24 w-72 h-72 bg-gradient-to-br from-magentaNeon/20 via-purpleNeon/25 to-transparent rounded-full blur-[70px] pointer-events-none"></div><div class="absolute -bottom-20 -left-20 w-60 h-60 bg-cyanAccent/15 rounded-full blur-[70px] pointer-events-none"></div><div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(35,169,189,0.08),transparent_65%)] pointer-events-none"></div><div class="relative z-10 space-y-6"><div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 lg:gap-8"><div class="relative w-32 h-32 sm:w-36 sm:h-36 shrink-0 group/avatar"><div class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-cyanAccent via-purpleNeon to-magentaNeon blur-sm opacity-80 group-hover/avatar:opacity-100 group-hover/avatar:scale-105 transition-all duration-500"></div><div class="relative w-full h-full rounded-2xl overflow-hidden border-2 border-cyan-300/40 shadow-2xl bg-obsidian p-0.5"><img alt="Videsh Karmakar" class="w-full h-full object-cover rounded-2xl transition-transform duration-700 group-hover/avatar:scale-105" src="https://cdn.phototourl.com/member/2026-09-24-d3b8ff6f-f0d4-43e0-9082-9f39cc851774.png"></div></div><div class="space-y-3 text-center sm:text-left min-w-0 flex-1"><h3 class="text-2xl sm:text-3xl font-bold tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-cyanAccent leading-tight drop-shadow-[0_0_20px_rgba(35,169,189,0.3)]" style="font-family: Montserrat, sans-serif;">VIDESH KARMAKAR</h3><p class="text-xs sm:text-sm text-slate-300/80 leading-relaxed font-sans">Architect behind Naihati Nights. Specially hand-crafted to assist thousands of pandal hoppers navigating Naihati Kali Puja with battery-efficient and hyper-optimized architecture designed for budget and legacy hardware.</p></div></div></div><div class="relative z-10 pt-6 border-t border-white/10 mt-6 space-y-4"><div class="flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-white/50"><span class="flex items-center gap-1.5"><span class="text-cyanAccent">✦</span> VERIFIED CHANNELS &amp; REPOSITORIES</span><span class="text-cyanAccent flex items-center gap-1.5 font-bold"><span class="w-1.5 h-1.5 rounded-full bg-cyanAccent animate-pulse"></span>SECURE CONNECT</span></div><div class="flex flex-wrap gap-3"><a class="px-4 py-2 rounded-full bg-white/5 hover:bg-cyanAccent hover:text-black border border-white/15 hover:border-cyanAccent text-xs font-semibold text-white transition-all flex items-center gap-1.5 shadow-[0_0_12px_rgba(35,169,189,0.15)] hover:shadow-[0_0_20px_#23A9BD] hover:scale-105 group/link backdrop-blur-md" href="https://videshkarmakar.carrd.co/" rel="noopener" target="_blank"><span class="text-cyanAccent group-hover/link:text-black transition-colors text-sm leading-none">✦</span><span class="">Portfolio</span><span class="text-[10px] opacity-70 group-hover/link:opacity-100 transition-transform group-hover/link:translate-x-0.5">↗</span></a><a class="px-4 py-2 rounded-full bg-white/5 hover:bg-[#1DB954] hover:text-black border border-white/15 hover:border-[#1DB954] text-xs font-semibold text-white transition-all flex items-center gap-1.5 hover:shadow-[0_0_20px_#1DB954] hover:scale-105 group/link backdrop-blur-md" href="https://open.spotify.com/artist/2eJEzi0mzJB60zVJf0OjWP" rel="noopener" target="_blank"><span class="text-[#1DB954] group-hover/link:text-black transition-colors text-xs leading-none">♬</span><span class="">Spotify</span><span class="text-[10px] opacity-70 group-hover/link:opacity-100 transition-transform group-hover/link:translate-x-0.5">↗</span></a><a class="px-4 py-2 rounded-full bg-white/5 hover:bg-magentaNeon hover:text-white border border-white/15 hover:border-magentaNeon text-xs font-semibold text-white transition-all flex items-center gap-1.5 hover:shadow-[0_0_20px_#d91b9b] hover:scale-105 group/link backdrop-blur-md" href="https://www.instagram.com/code.red_videsh/" rel="noopener" target="_blank"><span class="text-magentaNeon group-hover/link:text-white transition-colors text-xs leading-none">◈</span><span class="">Instagram</span><span class="text-[10px] opacity-70 group-hover/link:opacity-100 transition-transform group-hover/link:translate-x-0.5">↗</span></a><a class="px-4 py-2 rounded-full bg-white/5 hover:bg-[#FF0000] hover:text-white border border-white/15 hover:border-[#FF0000] text-xs font-semibold text-white transition-all flex items-center gap-1.5 hover:shadow-[0_0_20px_#FF0000] hover:scale-105 group/link backdrop-blur-md" href="https://www.youtube.com/@videshkarmakar2000" rel="noopener" target="_blank"><span class="text-red-400 group-hover/link:text-white transition-colors text-xs leading-none">▶</span><span class="">YouTube</span><span class="text-[10px] opacity-70 group-hover/link:opacity-100 transition-transform group-hover/link:translate-x-0.5">↗</span></a><a class="px-4 py-2 rounded-full bg-white/5 hover:bg-[#1877F2] hover:text-white border border-white/15 hover:border-[#1877F2] text-xs font-semibold text-white transition-all flex items-center gap-1.5 hover:shadow-[0_0_20px_#1877F2] hover:scale-105 group/link backdrop-blur-md" href="https://www.facebook.com/gfx.videsh" rel="noopener" target="_blank"><span class="text-blue-400 group-hover/link:text-white transition-colors text-xs leading-none font-bold">f</span><span class="">Facebook</span><span class="text-[10px] opacity-70 group-hover/link:opacity-100 transition-transform group-hover/link:translate-x-0.5">↗</span></a></div></div></div></div>
+</div>
+</section>
+<!-- END: AboutSection -->
+<!-- BEGIN: ServicesSection -->
+<section class="relative py-28 px-6" id="capabilities">
+<!-- Huge Watermark Outline "SERVICES" -->
+<div class="absolute top-4 right-6 lg:right-24 text-stroke-watermark-lg font-syne text-[90px] sm:text-[160px] lg:text-[210px] font-black leading-none pointer-events-none select-none z-0 opacity-40">
+      SERVICES
+    </div>
+<div class="max-w-7xl mx-auto relative z-10">
+<!-- Header -->
+<div class="mb-14 space-y-3">
+<div class="inline-flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-magentaNeon shadow-[0_0_8px_#d91b9b]"></span>
+<span class="text-xs font-mono font-bold tracking-[0.25em] text-white/70 uppercase">
+    WHAT WE DO
+  </span>
+</div>
+<h2 class="text-3xl sm:text-5xl font-syne font-bold text-white max-w-2xl leading-tight" style="font-family: Montserrat, sans-serif; letter-spacing: -0.02em; text-transform: uppercase; line-height: 1.15; font-weight: 800;">
+          Elevate Your Festive Experience With Reactive Low-End Solutions
+        </h2>
+</div>
+<!-- 4-Card Translucent Horizontal Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="bg-glassCard backdrop-blur-xl border border-white/10 hover:border-cyanAccent/60 p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(35,169,189,0.25)] group glass-reactive">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-cyanAccent group-hover:scale-110 group-hover:bg-cyanAccent/20 group-hover:border-cyanAccent/50 transition-all shadow-[0_0_15px_rgba(35,169,189,0.1)]">
+<!-- Vector Map Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-white font-syne group-hover:text-cyanAccent transition-colors" style="font-family: Montserrat, sans-serif;">Offline Vector GPS</h3>
+<p class="text-xs text-slate-400 leading-relaxed">
+              Pre-rendered pandal vector geography compiled to byte-level geometry with zero continuous battery drain or cellular load.
+            </p>
+</div>
+<div class="pt-8">
+<a class="inline-flex items-center gap-2 bg-white/10 hover:bg-cyanAccent text-white hover:text-black px-4 py-2 rounded-full text-[11px] font-bold tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_15px_#23A9BD]" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="">DISCOVER</span>
+<span class="text-xs transition-transform group-hover:translate-x-1">➔</span>
+</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-glassCard backdrop-blur-xl border border-white/10 hover:border-magentaNeon/60 p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(217,27,155,0.25)] group glass-reactive">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-magentaNeon group-hover:scale-110 group-hover:bg-magentaNeon/20 group-hover:border-magentaNeon/50 transition-all shadow-[0_0_15px_rgba(217,27,155,0.1)]">
+<!-- Telemetry Radar Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-white font-syne group-hover:text-magentaNeon transition-colors" style="font-family: Montserrat, sans-serif;">Reactive Crowd Telemetry</h3>
+<p class="text-xs text-slate-400 leading-relaxed">
+              Local edge calculations estimate queue velocities and entry gate delays without sending telemetry data to external servers.
+            </p>
+</div>
+<div class="pt-8">
+<a class="inline-flex items-center gap-2 bg-white/10 hover:bg-magentaNeon text-white hover:text-black px-4 py-2 rounded-full text-[11px] font-bold tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_15px_#d91b9b]" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="">DISCOVER</span>
+<span class="text-xs transition-transform group-hover:translate-x-1">➔</span>
+</a>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-glassCard backdrop-blur-xl border border-white/10 hover:border-purpleNeon/60 p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(138,43,226,0.25)] group glass-reactive">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-purpleNeon group-hover:scale-110 group-hover:bg-purpleNeon/20 group-hover:border-purpleNeon/50 transition-all shadow-[0_0_15px_rgba(138,43,226,0.1)]">
+<!-- Transit Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-white font-syne group-hover:text-purpleNeon transition-colors" style="font-family: Montserrat, sans-serif;">Transit &amp; Train Radar</h3>
+<p class="text-xs text-slate-400 leading-relaxed">
+              Instant Sealdah-Ranaghat main line suburban special timetables and Hooghly River ferry crossing status synchronized offline.
+            </p>
+</div>
+<div class="pt-8">
+<a class="inline-flex items-center gap-2 bg-white/10 hover:bg-purpleNeon text-white hover:text-black px-4 py-2 rounded-full text-[11px] font-bold tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_15px_#8a2be2]" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="">DISCOVER</span>
+<span class="text-xs transition-transform group-hover:translate-x-1">➔</span>
+</a>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-glassCard backdrop-blur-xl border border-white/10 hover:border-cyanAccent/60 p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_40px_rgba(35,169,189,0.25)] group glass-reactive">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-cyanAccent group-hover:scale-110 group-hover:bg-cyanAccent/20 group-hover:border-cyanAccent/50 transition-all shadow-[0_0_15px_rgba(35,169,189,0.1)]">
+<!-- SOS Mesh Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-white font-syne group-hover:text-cyanAccent transition-colors" style="font-family: Montserrat, sans-serif;">Emergency SOS Mesh</h3>
+<p class="text-xs text-slate-400 leading-relaxed">
+              Direct offline emergency beacons, medical tents, volunteer camp coordinates, and lost &amp; found channels operating peer-to-peer.
+            </p>
+</div>
+<div class="pt-8">
+<a class="inline-flex items-center gap-2 bg-white/10 hover:bg-cyanAccent text-white hover:text-black px-4 py-2 rounded-full text-[11px] font-bold tracking-wider uppercase transition-all duration-300 hover:shadow-[0_0_15px_#23A9BD]" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="">DISCOVER</span>
+<span class="text-xs transition-transform group-hover:translate-x-1">➔</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Center Action Button -->
+<div class="mt-12 flex justify-center">
+<a class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 hover:bg-white/15 border border-white/20 hover:border-cyanAccent/60 text-xs font-bold tracking-widest uppercase text-white transition-all hover:shadow-[0_0_20px_rgba(35,169,189,0.3)] group" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="group-hover:text-cyanAccent transition-colors">VIEW FULL APK SPECIFICATIONS</span>
+<span class="w-6 h-6 rounded-full bg-white/20 group-hover:bg-cyanAccent group-hover:text-black flex items-center justify-center text-white transition-all">➔</span>
+</a>
+</div>
+<!-- Section index indicator: 02 -->
+<div class="mt-16 flex items-center justify-start gap-3 text-xs font-mono text-white/40">
+<span class="w-4 h-[1px] bg-white/10"></span>
+<span class="w-4 h-[1px] bg-white/10"></span>
+<span class="w-12 h-[1px] bg-magentaNeon/50"></span>
+<span class="text-magentaNeon font-bold">02</span>
+</div>
+</div>
+</section>
+<!-- END: ServicesSection -->
+<!-- BEGIN: ProcessSection -->
+<!-- END: ProcessSection -->
+<!-- BEGIN: FluidTypographyRibbonSection -->
+<section class="relative py-6 overflow-hidden bg-obsidian/80 border-y border-cyan-300/30 backdrop-blur-md">
+<!-- Background Ambient Glow -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-full max-w-5xl h-16 bg-gradient-to-r from-cyanAccent/10 via-purpleNeon/15 to-magentaNeon/10 blur-[70px] rounded-full opacity-50"></div>
+</div>
+<!-- Sleek Cyber Ticker Bar with Infinite Marquee -->
+<div class="relative z-10 overflow-hidden select-none flex items-center">
+<div class="flex items-center gap-8 whitespace-nowrap will-change-transform animate-marquee-scroll hover:[animation-play-state:paused]">
+<!-- Loop Sequence 1 -->
+<div class="flex items-center gap-6 shrink-0">
+<span class="font-syne font-bold text-sm tracking-[0.25em] text-white uppercase">WHERE NAVIGATION MEETS SPEED</span>
+<span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+<span class="font-mono text-xs font-bold tracking-[0.22em] text-cyanAccent uppercase px-3 py-1 rounded-full bg-cyanAccent/10 border border-cyan-300/30 shadow-[0_0_12px_rgba(35,169,189,0.2)] flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-cyanAccent animate-ping"></span>
+          60 FPS REACTIVE
+        </span>
+<span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+<span class="font-syne font-bold text-sm tracking-[0.25em] text-white/90 uppercase">PURE OFFLINE ARCHITECTURE</span>
+<span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+<span class="font-mono text-xs font-bold tracking-[0.22em] text-white/80 uppercase px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-cyanAccent/50 transition-colors">ZERO BATTERY DRAIN</span>
+<span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+<span class="font-syne font-bold text-sm tracking-[0.25em] text-white uppercase">SUB-15MS ROUTE CALCULATION</span>
+<span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+</div>
+<!-- Loop Sequence 2 (Continuous Duplicate) -->
+<div class="flex items-center gap-6 shrink-0">
+<span class="font-syne font-bold text-sm tracking-[0.25em] text-white uppercase">WHERE NAVIGATION MEETS SPEED</span>
+<span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+<span class="font-mono text-xs font-bold tracking-[0.22em] text-cyanAccent uppercase px-3 py-1 rounded-full bg-cyanAccent/10 border border-cyan-300/30 shadow-[0_0_12px_rgba(35,169,189,0.2)] flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-cyanAccent animate-ping"></span>
+          60 FPS REACTIVE
+        </span>
+<span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+<span class="font-syne font-bold text-sm tracking-[0.25em] text-white/90 uppercase">PURE OFFLINE ARCHITECTURE</span>
+<span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+<span class="font-mono text-xs font-bold tracking-[0.22em] text-white/80 uppercase px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-cyanAccent/50 transition-colors">ZERO BATTERY DRAIN</span>
+<span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+<span class="font-syne font-bold text-sm tracking-[0.25em] text-white uppercase">SUB-15MS ROUTE CALCULATION</span>
+<span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+</div>
+</div>
+</div>
+</section>
+<!-- END: FluidTypographyRibbonSection -->
+<!-- BEGIN: DeveloperSpotlightAndContact -->
+<section class="relative py-28 px-6" id="download"><div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-cyanAccent/10 rounded-full blur-[140px] pointer-events-none"></div><div class="absolute -bottom-20 -right-20 w-[450px] h-[450px] bg-magentaNeon/10 rounded-full blur-[130px] pointer-events-none"></div><div class="max-w-7xl mx-auto relative z-10"><div class="text-center max-w-2xl mx-auto mb-16 space-y-3"><h2 class="text-3xl sm:text-5xl font-syne font-bold text-white leading-tight" style="font-family: Montserrat, sans-serif; letter-spacing: -0.02em; text-transform: uppercase;">Download Naihati Nights APK</h2></div><div class="relative bg-glassCard backdrop-blur-xl border border-cyan-300/40 rounded-3xl p-8 sm:p-10 lg:p-12 shadow-[0_0_35px_rgba(35,169,189,0.25)] hover:shadow-[0_0_50px_rgba(35,169,189,0.35)] transition-shadow duration-500 overflow-hidden group">
+<!-- Ambient holographic glow backdrop inside card -->
+<div class="absolute -top-32 -right-32 w-80 h-80 bg-cyanAccent/15 rounded-full blur-[90px] pointer-events-none"></div>
+<div class="absolute -bottom-32 -left-32 w-80 h-80 bg-magentaNeon/15 rounded-full blur-[90px] pointer-events-none"></div>
+<!-- Top Banner Ribbon & Tech Architecture Indicators -->
+<div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6 mb-8 relative z-10">
+<div class="flex items-center gap-3">
+<span class="px-3.5 py-1 rounded-full bg-cyanAccent text-black font-mono text-[10px] font-black uppercase tracking-wider shadow-[0_0_12px_#23A9BD] hover:scale-105 transition-transform cursor-default">OFFICIAL PRODUCTION BUILD</span>
+
+</div>
+
+</div>
+<!-- Grand Grid Content: Specifications & CTA -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+<!-- Left Col (lg:col-span-7): Headline, Architecture description & Feature Highlights -->
+<div class="lg:col-span-7 space-y-6">
+<div>
+<div class="text-xs font-mono uppercase tracking-[0.25em] text-cyanAccent mb-2">CORE FESTIVAL NAVIGATION SUITE</div>
+<h3 class="text-2xl sm:text-4xl font-syne font-bold text-white leading-tight" style="font-family: Montserrat, sans-serif; letter-spacing: -0.02em;">Official Naihati Nights APK Release</h3>
+</div>
+<!-- Feature Checklist Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-sans text-slate-300">
+<div class="flex items-center gap-2.5 bg-white/5 border border-white/10 px-3.5 py-2.5 rounded-xl hover:border-cyanAccent/50 hover:bg-white/10 transition-all cursor-default group/item">
+<span class="text-cyanAccent font-bold text-sm group-hover/item:scale-125 transition-transform">✓</span>
+<span class="">Full Offline Pandal Maps</span>
+</div>
+<div class="flex items-center gap-2.5 bg-white/5 border border-white/10 px-3.5 py-2.5 rounded-xl hover:border-cyanAccent/50 hover:bg-white/10 transition-all cursor-default group/item">
+<span class="text-cyanAccent font-bold text-sm group-hover/item:scale-125 transition-transform">✓</span>
+<span class="">Instant Suburban Rail Radar</span>
+</div>
+<div class="flex items-center gap-2.5 bg-white/5 border border-white/10 px-3.5 py-2.5 rounded-xl hover:border-cyanAccent/50 hover:bg-white/10 transition-all cursor-default group/item">
+<span class="text-cyanAccent font-bold text-sm group-hover/item:scale-125 transition-transform">✓</span>
+<span class="">Emergency Mesh P2P SOS</span>
+</div>
+<div class="flex items-center gap-2.5 bg-white/5 border border-white/10 px-3.5 py-2.5 rounded-xl hover:border-cyanAccent/50 hover:bg-white/10 transition-all cursor-default group/item">
+<span class="text-cyanAccent font-bold text-sm group-hover/item:scale-125 transition-transform">✓</span>
+<span class="">Sub-15ms Latency on Low-End</span>
+</div>
+</div>
+<!-- Telemetry Spec Micro-Pills -->
+</div>
+<!-- Right Col (lg:col-span-5): CTA Box & Mobile Direct QR / Mirrors -->
+<div class="lg:col-span-5 flex flex-col gap-5 bg-black/40 border border-white/10 p-6 sm:p-7 rounded-2xl relative hover:border-cyanAccent/40 transition-colors">
+<div class="space-y-3">
+<!-- Primary Big Download CTA with Cyan Glow Pulse -->
+<a class="btn-reactive-cyan w-full inline-flex items-center justify-center gap-3 bg-cyanAccent hover:bg-cyan-400 text-black py-4 px-6 rounded-full text-xs sm:text-sm font-bold tracking-widest uppercase transition-all shadow-[0_0_25px_rgba(35,169,189,0.35)]" download="" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<svg class="w-5 h-5 shrink-0 animate-bounce" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">DOWNLOAD APK</span>
+</a>
+<!-- Secondary Direct Cloud Mirror -->
+</div>
+<!-- Mobile Quick Scan / Direct Transfer Notice -->
+<div class="flex items-center gap-4 pt-3 border-t border-white/10 text-xs text-slate-400">
+<div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cyanAccent shrink-0 shadow-[0_0_12px_rgba(35,169,189,0.15)]">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M3 3h6v6H3V3zm12 0h6v6h-6V3zM3 15h6v6H3v-6zm14 2v4m-2-2h4m2-7v3h-3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="min-w-0 flex-1">
+<div class="text-white font-semibold text-xs">Instant Mobile Sideload</div>
+<div class="text-[11px] text-slate-400">Safe APK installation. No Google Play account or background services required.</div>
+</div>
+</div>
+</div>
+</div>
+</div></div></section>
+<!-- END: DeveloperSpotlightAndContact -->
+<!-- BEGIN: Footer -->
+<footer class="border-t border-white/10 bg-black/80 backdrop-blur-lg py-12 px-6 relative z-10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+<!-- Logo & Credits -->
+<div class="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+<a class="font-display font-black text-xl tracking-[0.25em] text-white hover:text-cyanAccent transition-colors" href="#">
+          NAIHATI<span class="text-cyanAccent">NIGHTS</span>
+</a>
+<span class="hidden sm:inline text-white/20">|</span>
+<span class="text-xs text-slate-400">
+          Crafted with reactive excellence by <strong class="text-white hover:text-cyanAccent transition-colors cursor-pointer">VIDESH KARMAKAR</strong>
+</span>
+</div>
+<!-- Rights -->
+<div class="text-xs font-mono text-white/40 text-center md:text-right">
+        Naihati Nights 2025. All rights reserved.
+      </div>
+</div>
+</footer>
+<!-- END: Footer -->
+</div>
+
+
+</body></html>

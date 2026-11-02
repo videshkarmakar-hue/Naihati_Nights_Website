@@ -1,0 +1,56 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /reviews/{reviewId} {
+      // Anyone can read reviews on this public landing page
+      allow read: if true;
+
+      // Anyone can create a review/comment without needing to log in
+      allow create: if request.resource.data.rating is number
+                    && request.resource.data.rating >= 1
+                    && request.resource.data.rating <= 5
+                    && request.resource.data.comment is string
+                    && request.resource.data.comment.size() >= 5
+                    && request.resource.data.comment.size() <= 1000
+                    && request.resource.data.displayName is string
+                    && request.resource.data.displayName.size() >= 2
+                    && request.resource.data.displayName.size() <= 60;
+
+      // Author can update their review
+      allow update: if request.resource.data.rating is number
+                    && request.resource.data.rating >= 1
+                    && request.resource.data.rating <= 5
+                    && request.resource.data.comment is string
+                    && request.resource.data.comment.size() >= 5
+                    && request.resource.data.comment.size() <= 1000;
+
+      // Delete allowed
+      allow delete: if true;
+    }
+
+    match /inquiries/{inquiryId} {
+      // Anyone can submit a professional inquiry to the developer
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.name.size() >= 2
+                    && request.resource.data.name.size() <= 100
+                    && request.resource.data.email is string
+                    && request.resource.data.email.size() >= 5
+                    && request.resource.data.email.size() <= 150
+                    && request.resource.data.message is string
+                    && request.resource.data.message.size() >= 5
+                    && request.resource.data.message.size() <= 3000;
+      // Inquiries are confidential communications
+      allow read, update, delete: if false;
+    }
+
+    match /stats/{statId} {
+      // Public real-time app download & trust statistics
+      allow read: if true;
+      // Allow atomic increments/updates to download statistics
+      allow create, update: if request.resource.data.downloadCount is number
+                            && request.resource.data.downloadCount >= 0;
+      allow delete: if false;
+    }
+  }
+}
+

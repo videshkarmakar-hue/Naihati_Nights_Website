@@ -1,0 +1,19 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+
+# legacy local APK binaries (official APKs are distributed via GitHub releases)
+public/downloads/*.apk
+
+# pwa dev build output
+dev-dist/

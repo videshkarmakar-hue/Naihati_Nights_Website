@@ -1,0 +1,652 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Naihati Nights | Next-Gen Reactive Festival Guidance Engine</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Space Grotesk & Syne -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Syne:wght@700;800;900&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#010310',
+            cyanAccent: '#23A9BD',
+            purpleNeon: '#8a2be2',
+            magentaNeon: '#d91b9b',
+            glassBg: 'rgba(10, 14, 28, 0.65)',
+            glassCard: 'rgba(18, 12, 34, 0.45)',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            syne: ['"Syne"', 'sans-serif'],
+          },
+          animation: {
+            'spin-slow': 'spin 18s linear infinite',
+            'pulse-subtle': 'pulse 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'flow-glow': 'flowGlow 8s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            flowGlow: {
+              '0%': { filter: 'drop-shadow(0 0 25px rgba(35,169,189,0.35)) hue-rotate(0deg)' },
+              '100%': { filter: 'drop-shadow(0 0 45px rgba(217,27,155,0.45)) hue-rotate(25deg)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom CSS Styling -->
+<style data-purpose="typography">
+    .text-stroke-watermark {
+      -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.08);
+      color: transparent;
+      user-select: none;
+    }
+    .text-stroke-watermark-lg {
+      -webkit-text-stroke: 2px rgba(255, 255, 255, 0.07);
+      color: transparent;
+      user-select: none;
+    }
+  </style>
+<style data-purpose="fluid-artwork">
+    /* High visual fidelity CSS fluid 3D neon ribbons replicating the reference's organic shapes */
+    .fluid-sculpture-hero {
+      position: relative;
+      background: radial-gradient(circle at 40% 40%, #ff2bd6 0%, #7b2cbf 35%, #23A9BD 70%, transparent 85%);
+      filter: blur(2px) contrast(130%) brightness(1.1);
+      box-shadow: 0 0 80px rgba(123, 44, 191, 0.5), inset 0 0 60px rgba(35, 169, 189, 0.6);
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      animation: morphShape 12s ease-in-out infinite alternate;
+    }
+    .fluid-sculpture-hero::before {
+      content: '';
+      position: absolute;
+      inset: -15px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(35,169,189,0.8), rgba(220,38,127,0.7), rgba(138,43,226,0.9));
+      filter: blur(24px);
+      opacity: 0.75;
+      z-index: -1;
+    }
+    @keyframes morphShape {
+      0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; transform: rotate(0deg) scale(1); }
+      50% { border-radius: 65% 35% 38% 62% / 60% 30% 70% 40%; transform: rotate(6deg) scale(1.03); }
+      100% { border-radius: 35% 65% 60% 40% / 40% 60% 40% 60%; transform: rotate(-4deg) scale(0.98); }
+    }
+    .fluid-highlight-layer {
+      background: radial-gradient(circle at 65% 25%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 40%);
+    }
+  </style>
+<!-- END: Custom CSS Styling -->
+</head>
+<body class="bg-obsidian text-slate-200 font-sans antialiased selection:bg-cyanAccent selection:text-black overflow-x-hidden">
+<!-- BEGIN: TopHeader -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md bg-obsidian/70 border-b border-white/5">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group" href="#">
+<span class="w-3.5 h-3.5 rounded-full bg-cyanAccent shadow-[0_0_12px_#23A9BD]"></span>
+<span class="font-display font-black text-xl tracking-[0.25em] text-white group-hover:text-cyanAccent transition-colors">
+          NAIHATI<span class="text-white/40">NIGHTS</span>
+</span>
+</a>
+<!-- Center Navigation Links -->
+<nav class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-wider text-slate-300 uppercase"><a class="text-white hover:text-cyanAccent transition-colors" href="#home">Home</a>
+<a class="hover:text-cyanAccent transition-colors" href="#about">About</a>
+<a class="hover:text-cyanAccent transition-colors" href="#capabilities">Services</a>
+<a class="hover:text-cyanAccent transition-colors" href="#download">Downloads</a>
+<a class="hover:text-cyanAccent transition-colors" href="#developer">Developer</a></nav>
+<!-- Right CTA Pill Button -->
+<div class="flex items-center gap-4">
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-black text-xs font-semibold tracking-wider transition-all duration-300 border border-white/20 hover:border-white shadow-[0_0_20px_rgba(35,169,189,0.2)]" download="" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="">START DOWNLOAD</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
+</svg>
+</a>
+</div>
+</div>
+</header>
+<!-- END: TopHeader -->
+<!-- BEGIN: HeroSection -->
+<section class="relative min-h-screen pt-32 pb-20 px-6 flex flex-col justify-center overflow-hidden" id="home">
+<!-- Atmospheric Background Ambient Glows -->
+<div class="absolute -top-40 -right-40 w-[620px] h-[620px] bg-purpleNeon/25 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="absolute top-1/3 -left-40 w-[500px] h-[500px] bg-cyanAccent/15 rounded-full blur-[130px] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+<!-- Hero Left Content -->
+<div class="lg:col-span-7 space-y-7">
+<div class="inline-flex items-center gap-2">
+<span class="text-xs font-mono font-bold tracking-[0.3em] text-white/70 uppercase">WE ARE</span>
+</div>
+<h1 class="text-5xl sm:text-7xl xl:text-8xl font-black font-syne tracking-tight text-white leading-none">
+          NAIHATI <br>
+<span class="tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-white/60">
+            NIGHTS
+          </span>
+</h1>
+
+<!-- Hero Action Dual-Segmented Reactive Pill Button -->
+<div class="pt-3 flex flex-wrap items-center gap-4">
+<a class="group inline-flex items-center bg-white/10 hover:bg-white/20 border border-white/20 p-1.5 rounded-full transition-all duration-300 shadow-[0_0_30px_rgba(217,27,155,0.25)]" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="px-6 py-2.5 text-xs font-bold tracking-widest uppercase text-white group-hover:text-cyanAccent transition-colors">
+              DOWNLOAD APK
+            </span>
+<div class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center transition-transform duration-300 group-hover:scale-105 group-hover:bg-cyanAccent">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+<path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</a>
+</div>
+<div class="pt-2 flex items-center gap-2 text-xs font-mono tracking-wider text-slate-400 uppercase"><span class="w-1.5 h-1.5 rounded-full bg-cyanAccent shadow-[0_0_8px_#23A9BD]"></span><span class="">Crafted by <strong class="text-white font-bold tracking-widest hover:text-cyanAccent transition-colors cursor-default">VIDESH KARMAKAR</strong></span></div></div>
+<!-- Hero Right Visual: Spectacular 3D Neon Fluid Sculpture -->
+<div class="lg:col-span-5 relative flex items-center justify-center">
+<!-- Vertical Step Indicator Line on right edge -->
+<div class="absolute -right-4 hidden lg:flex flex-col items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
+<span class="w-1 h-8 bg-gradient-to-b from-white to-transparent rounded-full"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+</div>
+<!-- 3D Neon Ribbon Art Container -->
+<div class="relative w-80 h-80 sm:w-96 sm:h-96 md:w-[420px] md:h-[420px] flex items-center justify-center animate-flow-glow">
+<div class="fluid-sculpture-hero w-full h-full relative overflow-hidden">
+<!-- Glossy Highlight Reflections -->
+<div class="fluid-highlight-layer absolute inset-0"></div>
+<!-- Concentric dynamic fluid arcs -->
+<div class="absolute inset-4 rounded-[45%_55%_65%_35%] border-2 border-cyan-300/40 transform rotate-12"></div>
+<div class="absolute inset-10 rounded-[55%_45%_40%_60%] border border-magentaNeon/50 transform -rotate-6"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Hero Bottom Bar: Socials & Rotating Scroll Indicator -->
+<div class="max-w-7xl mx-auto w-full mt-16 pt-8 border-t border-white/5 flex items-center justify-between text-xs text-white/50">
+<!-- Social anchors -->
+<div class="flex items-center gap-6">
+<a class="hover:text-white transition-colors" href="https://www.facebook.com/gfx.videsh" rel="noopener" target="_blank">f</a>
+<a class="hover:text-white transition-colors" href="https://www.instagram.com/code.red_videsh/" rel="noopener" target="_blank">ig</a>
+<a class="hover:text-white transition-colors" href="https://videshkarmakar.carrd.co/" rel="noopener" target="_blank">✕</a>
+</div>
+<!-- Circular Revolving "Scroll to Explore" Badge -->
+<div class="relative w-24 h-24 flex items-center justify-center">
+<svg class="w-full h-full animate-spin-slow" viewBox="0 0 100 100">
+<path d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none" id="circlePath"></path>
+<text class="text-[9px] uppercase tracking-[0.22em] fill-white/60 font-mono">
+<textPath href="#circlePath">
+              • SCROLL TO EXPLORE • SCROLL TO EXPLORE
+            </textPath>
+</text>
+</svg>
+<div class="absolute w-8 h-8 rounded-full border border-white/30 flex items-center justify-center">
+<svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+</div>
+</div>
+<!-- Carousel / Slide Arrow indicators -->
+<div class="flex items-center gap-3">
+<span class="hover:text-white cursor-pointer transition-colors">←</span>
+<span class="hover:text-white cursor-pointer transition-colors">→</span>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: AboutSection -->
+<section class="relative py-28 px-6 overflow-hidden" id="about">
+<!-- Huge Watermark "ABOUT" Outline Typography in Background -->
+<div class="absolute top-10 right-4 lg:right-16 text-stroke-watermark-lg font-syne text-[110px] sm:text-[180px] lg:text-[230px] font-black leading-none pointer-events-none select-none z-0">
+      ABOUT
+    </div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+<!-- Left: Fluid 3D Neon Iridescent Splash Sculpture -->
+<div class="lg:col-span-6 flex justify-center items-center">
+<div class="relative w-72 h-72 sm:w-96 sm:h-96 lg:w-[440px] lg:h-[440px]">
+<!-- Fluid sculpture organic wave -->
+<div class="w-full h-full rounded-[60%_40%_70%_30%_/_50%_60%_40%_50%] bg-gradient-to-tr from-cyanAccent via-purpleNeon to-magentaNeon opacity-90 blur-[1px] shadow-[0_0_90px_rgba(138,43,226,0.6)] animate-flow-glow">
+<div class="w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/40 via-transparent to-black/60 rounded-inherit"></div>
+</div>
+<!-- Orbiting highlight ring -->
+<div class="absolute inset-0 rounded-[40%_60%_50%_50%] border-2 border-white/20 transform rotate-45 scale-95 pointer-events-none"></div>
+</div>
+</div>
+<!-- Right: Content & Overview -->
+<div class="lg:col-span-6 space-y-6">
+<div class="text-xs font-mono font-bold tracking-[0.25em] text-white/60 uppercase">
+          WHO WE ARE
+        </div>
+<h2 class="text-3xl sm:text-4xl font-bold font-syne text-white leading-tight">
+          Providing comprehensive offline guidance and reactive navigation tailored for festival pilgrims.
+        </h2>
+
+<!-- Action Pill -->
+<div class="pt-4">
+<a class="inline-flex items-center bg-white/10 hover:bg-white/20 border border-white/20 p-1.5 rounded-full transition-all group" href="#capabilities">
+<span class="px-5 py-2 text-xs font-bold tracking-widest uppercase text-white group-hover:text-cyanAccent transition-colors">
+              EXPLORE FEATURES
+            </span>
+<div class="w-9 h-9 rounded-full bg-white text-black flex items-center justify-center group-hover:bg-cyanAccent group-hover:scale-105 transition-all">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+</a>
+</div>
+</div>
+</div>
+<!-- Section index indicator: 01 -->
+<div class="max-w-7xl mx-auto mt-20 flex items-center justify-end gap-3 text-xs font-mono text-white/40">
+<span class="text-white font-bold">01</span>
+<span class="w-12 h-[1px] bg-white/20"></span>
+<span class="w-4 h-[1px] bg-white/10"></span>
+<span class="w-4 h-[1px] bg-white/10"></span>
+</div>
+</section>
+<!-- END: AboutSection -->
+<!-- BEGIN: ServicesSection -->
+<section class="relative py-28 px-6" id="capabilities">
+<!-- Huge Watermark Outline "SERVICES" -->
+<div class="absolute top-4 right-6 lg:right-24 text-stroke-watermark-lg font-syne text-[90px] sm:text-[160px] lg:text-[210px] font-black leading-none pointer-events-none select-none z-0">
+      SERVICES
+    </div>
+<div class="max-w-7xl mx-auto relative z-10">
+<!-- Header -->
+<div class="mb-14 space-y-3">
+<span class="text-xs font-mono font-bold tracking-[0.25em] text-white/60 uppercase">
+          WHAT WE DO
+        </span>
+<h2 class="text-3xl sm:text-5xl font-syne font-bold text-white max-w-2xl leading-tight">
+          Elevate Your Festive Experience With Reactive Low-End Solutions
+        </h2>
+</div>
+<!-- 4-Card Translucent Horizontal Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="bg-glassCard backdrop-blur-xl border border-white/10 hover:border-cyanAccent/50 p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-cyanAccent group-hover:scale-110 transition-transform">
+<!-- Vector Map Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-white font-syne">Offline Vector GPS</h3>
+<p class="text-xs text-slate-400 leading-relaxed">
+              Pre-rendered pandal vector geography compiled to byte-level geometry with zero continuous battery drain or cellular load.
+            </p>
+</div>
+<div class="pt-8">
+<a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white text-white hover:text-black px-4 py-2 rounded-full text-[11px] font-bold tracking-wider uppercase transition-all duration-300" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="">DISCOVER</span>
+<span class="text-xs">➔</span>
+</a>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-glassCard backdrop-blur-xl border border-white/10 hover:border-magentaNeon/50 p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-magentaNeon group-hover:scale-110 transition-transform">
+<!-- Telemetry Radar Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-white font-syne">Reactive Crowd Telemetry</h3>
+<p class="text-xs text-slate-400 leading-relaxed">
+              Local edge calculations estimate queue velocities and entry gate delays without sending telemetry data to external servers.
+            </p>
+</div>
+<div class="pt-8">
+<a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white text-white hover:text-black px-4 py-2 rounded-full text-[11px] font-bold tracking-wider uppercase transition-all duration-300" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="">DISCOVER</span>
+<span class="text-xs">➔</span>
+</a>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-glassCard backdrop-blur-xl border border-white/10 hover:border-purpleNeon/50 p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-purpleNeon group-hover:scale-110 transition-transform">
+<!-- Transit Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-white font-syne">Transit &amp; Train Radar</h3>
+<p class="text-xs text-slate-400 leading-relaxed">
+              Instant Sealdah-Ranaghat main line suburban special timetables and Hooghly River ferry crossing status synchronized offline.
+            </p>
+</div>
+<div class="pt-8">
+<a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white text-white hover:text-black px-4 py-2 rounded-full text-[11px] font-bold tracking-wider uppercase transition-all duration-300" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="">DISCOVER</span>
+<span class="text-xs">➔</span>
+</a>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-glassCard backdrop-blur-xl border border-white/10 hover:border-cyanAccent/50 p-6 rounded-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-[0_10px_30px_rgba(0,0,0,0.5)] group">
+<div class="space-y-4">
+<div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-cyanAccent group-hover:scale-110 transition-transform">
+<!-- SOS Mesh Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h3 class="text-lg font-bold text-white font-syne">Emergency SOS Mesh</h3>
+<p class="text-xs text-slate-400 leading-relaxed">
+              Direct offline emergency beacons, medical tents, volunteer camp coordinates, and lost &amp; found channels operating peer-to-peer.
+            </p>
+</div>
+<div class="pt-8">
+<a class="inline-flex items-center gap-2 bg-white/10 hover:bg-white text-white hover:text-black px-4 py-2 rounded-full text-[11px] font-bold tracking-wider uppercase transition-all duration-300" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="">DISCOVER</span>
+<span class="text-xs">➔</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Center Action Button -->
+<div class="mt-12 flex justify-center">
+<a class="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 hover:bg-white/15 border border-white/20 text-xs font-bold tracking-widest uppercase text-white transition-all" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+<span class="">VIEW FULL APK SPECIFICATIONS</span>
+<span class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-white">➔</span>
+</a>
+</div>
+<!-- Section index indicator: 02 -->
+<div class="mt-16 flex items-center justify-start gap-3 text-xs font-mono text-white/40">
+<span class="w-4 h-[1px] bg-white/10"></span>
+<span class="w-4 h-[1px] bg-white/10"></span>
+<span class="w-12 h-[1px] bg-white/20"></span>
+<span class="text-white font-bold">02</span>
+</div>
+</div>
+</section>
+<!-- END: ServicesSection -->
+<!-- BEGIN: ProcessSection -->
+
+<!-- END: ProcessSection -->
+<!-- BEGIN: FluidTypographyRibbonSection -->
+<section class="relative py-6 overflow-hidden bg-obsidian/70 border-y border-cyan-300/30 backdrop-blur-md">
+  <!-- Background Ambient Glow -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <div class="w-full max-w-5xl h-16 bg-gradient-to-r from-cyanAccent/10 via-purpleNeon/15 to-magentaNeon/10 blur-[70px] rounded-full opacity-40"></div>
+  </div>
+
+  <!-- Sleek Cyber Ticker Bar -->
+  <div class="relative z-10 overflow-hidden select-none flex items-center">
+    <div class="flex items-center gap-8 whitespace-nowrap will-change-transform">
+      <!-- Loop Sequence 1 -->
+      <div class="flex items-center gap-6 shrink-0">
+        <span class="font-syne font-bold text-sm tracking-[0.25em] text-white uppercase">WHERE NAVIGATION MEETS SPEED</span>
+        <span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+        <span class="font-mono text-xs font-bold tracking-[0.22em] text-cyanAccent uppercase px-3 py-1 rounded-full bg-cyanAccent/10 border border-cyan-300/30 shadow-[0_0_12px_rgba(35,169,189,0.2)]">60 FPS REACTIVE</span>
+        <span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+        <span class="font-syne font-bold text-sm tracking-[0.25em] text-white/90 uppercase">PURE OFFLINE ARCHITECTURE</span>
+        <span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+        <span class="font-mono text-xs font-bold tracking-[0.22em] text-white/80 uppercase px-3 py-1 rounded-full bg-white/5 border border-white/10">ZERO BATTERY DRAIN</span>
+        <span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+        <span class="font-syne font-bold text-sm tracking-[0.25em] text-white uppercase">SUB-15MS ROUTE CALCULATION</span>
+        <span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+      </div>
+      <!-- Loop Sequence 2 (Continuous Duplicate) -->
+      <div class="flex items-center gap-6 shrink-0">
+        <span class="font-syne font-bold text-sm tracking-[0.25em] text-white uppercase">WHERE NAVIGATION MEETS SPEED</span>
+        <span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+        <span class="font-mono text-xs font-bold tracking-[0.22em] text-cyanAccent uppercase px-3 py-1 rounded-full bg-cyanAccent/10 border border-cyan-300/30 shadow-[0_0_12px_rgba(35,169,189,0.2)]">60 FPS REACTIVE</span>
+        <span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+        <span class="font-syne font-bold text-sm tracking-[0.25em] text-white/90 uppercase">PURE OFFLINE ARCHITECTURE</span>
+        <span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+        <span class="font-mono text-xs font-bold tracking-[0.22em] text-white/80 uppercase px-3 py-1 rounded-full bg-white/5 border border-white/10">ZERO BATTERY DRAIN</span>
+        <span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+        <span class="font-syne font-bold text-sm tracking-[0.25em] text-white uppercase">SUB-15MS ROUTE CALCULATION</span>
+        <span class="text-cyanAccent text-sm drop-shadow-[0_0_8px_#23A9BD]">✦</span>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END: FluidTypographyRibbonSection -->
+<!-- BEGIN: DeveloperSpotlightAndContact -->
+<section class="relative py-28 px-6" id="download"><div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-cyanAccent/10 rounded-full blur-[140px] pointer-events-none"></div><div class="absolute -bottom-20 -right-20 w-[450px] h-[450px] bg-magentaNeon/10 rounded-full blur-[130px] pointer-events-none"></div><div class="max-w-7xl mx-auto relative z-10"><div class="text-center max-w-2xl mx-auto mb-16 space-y-3"><div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyanAccent/10 border border-cyan-300/30 shadow-[0_0_12px_rgba(35,169,189,0.2)]"><span class="w-1.5 h-1.5 rounded-full bg-cyanAccent shadow-[0_0_8px_#23A9BD]"></span><span class="text-[10px] font-mono font-bold tracking-[0.25em] text-cyanAccent uppercase">OFFICIAL RELEASES // DIRECT MIRRORS</span></div><h2 class="text-3xl sm:text-5xl font-syne font-bold text-white leading-tight">Download Naihati Nights APK</h2></div><div class="relative bg-glassCard backdrop-blur-xl border border-cyan-300/40 rounded-3xl p-8 sm:p-10 lg:p-12 shadow-[0_0_30px_rgba(35,169,189,0.25)] overflow-hidden group">
+  <!-- Ambient holographic glow backdrop inside card -->
+  <div class="absolute -top-32 -right-32 w-80 h-80 bg-cyanAccent/15 rounded-full blur-[90px] pointer-events-none"></div>
+  <div class="absolute -bottom-32 -left-32 w-80 h-80 bg-magentaNeon/15 rounded-full blur-[90px] pointer-events-none"></div>
+
+  <!-- Top Banner Ribbon & Tech Architecture Indicators -->
+  <div class="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6 mb-8 relative z-10">
+    <div class="flex items-center gap-3">
+      <span class="px-3.5 py-1 rounded-full bg-cyanAccent text-black font-mono text-[10px] font-black uppercase tracking-wider shadow-[0_0_12px_#23A9BD]">OFFICIAL PRODUCTION BUILD</span>
+      <span class="text-[11px] font-mono text-cyanAccent tracking-widest uppercase">VERSION 2.5 STABLE (UNIVERSAL)</span>
+    </div>
+    <div class="flex items-center gap-2 text-[10px] font-mono text-slate-400">
+      <span class="w-2 h-2 rounded-full bg-cyanAccent animate-ping"></span>
+      <span class="text-white font-bold">BUILD VERIFIED</span>
+      <span class="text-white/30">|</span>
+      <span class="">SHA-256: 4C9E...B81A</span>
+    </div>
+  </div>
+
+  <!-- Grand Grid Content: Specifications & CTA -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+    <!-- Left Col (lg:col-span-7): Headline, Architecture description & Feature Highlights -->
+    <div class="lg:col-span-7 space-y-6">
+      <div>
+        <div class="text-xs font-mono uppercase tracking-[0.25em] text-cyanAccent mb-2">CORE FESTIVAL NAVIGATION SUITE</div>
+        <h3 class="text-2xl sm:text-4xl font-syne font-bold text-white leading-tight">Official Naihati Nights APK Release</h3>
+      </div>
+      
+
+      <!-- Feature Checklist Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-sans text-slate-300">
+        <div class="flex items-center gap-2.5 bg-white/5 border border-white/10 px-3.5 py-2.5 rounded-xl">
+          <span class="text-cyanAccent font-bold text-sm">✓</span>
+          <span class="">Full Offline Pandal Maps</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-white/5 border border-white/10 px-3.5 py-2.5 rounded-xl">
+          <span class="text-cyanAccent font-bold text-sm">✓</span>
+          <span class="">Instant Suburban Rail Radar</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-white/5 border border-white/10 px-3.5 py-2.5 rounded-xl">
+          <span class="text-cyanAccent font-bold text-sm">✓</span>
+          <span class="">Emergency Mesh P2P SOS</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-white/5 border border-white/10 px-3.5 py-2.5 rounded-xl">
+          <span class="text-cyanAccent font-bold text-sm">✓</span>
+          <span class="">Sub-15ms Latency on Low-End</span>
+        </div>
+      </div>
+
+      <!-- Telemetry Spec Micro-Pills -->
+      
+    </div>
+
+    <!-- Right Col (lg:col-span-5): CTA Box & Mobile Direct QR / Mirrors -->
+    <div class="lg:col-span-5 flex flex-col gap-5 bg-black/40 border border-white/10 p-6 sm:p-7 rounded-2xl relative">
+      <div class="space-y-3">
+        <!-- Primary Big Download CTA -->
+        <a class="w-full inline-flex items-center justify-center gap-3 bg-cyanAccent hover:bg-cyan-400 text-black py-4 px-6 rounded-full text-xs sm:text-sm font-bold tracking-widest uppercase transition-all shadow-[0_0_25px_rgba(35,169,189,0.35)] hover:scale-[1.02] duration-300" download="" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+          <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="">DOWNLOAD APK (~14.8 MB)</span>
+        </a>
+
+        <!-- Secondary Direct Cloud Mirror -->
+        
+      </div>
+
+      <!-- Mobile Quick Scan / Direct Transfer Notice -->
+      <div class="flex items-center gap-4 pt-3 border-t border-white/10 text-xs text-slate-400">
+        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cyanAccent shrink-0">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M3 3h6v6H3V3zm12 0h6v6h-6V3zM3 15h6v6H3v-6zm14 2v4m-2-2h4m2-7v3h-3" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </div>
+        <div class="min-w-0 flex-1">
+          <div class="text-white font-semibold text-xs">Instant Mobile Sideload</div>
+          <div class="text-[11px] text-slate-400">Safe APK installation. No Google Play account or background services required.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="mt-12 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-slate-400"><div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10"><span class="w-2 h-2 rounded-full bg-cyanAccent"></span><span class="">Zero Cellular Data Required After Install</span></div><div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10"><span class="w-2 h-2 rounded-full bg-purpleNeon"></span><span class="">100% Offline GPS Vector Engine</span></div><div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10"><span class="w-2 h-2 rounded-full bg-magentaNeon"></span><span class="">Verified Clean &amp; Safe Package</span></div></div></div></section><section class="relative py-28 px-6" id="developer">
+<div class="max-w-7xl mx-auto">
+<!-- Section header -->
+<div class="text-center max-w-xl mx-auto mb-16 space-y-2">
+<span class="text-xs font-mono font-bold tracking-[0.25em] text-cyanAccent uppercase">
+          GET IN TOUCH
+        </span>
+<h2 class="text-3xl sm:text-5xl font-syne font-bold text-white">
+          Architect &amp; Developer Console
+        </h2>
+
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+<!-- Left: Developer Spotlight Card (VIDESH KARMAKAR) -->
+<div class="lg:col-span-5 bg-glassCard backdrop-blur-xl border border-cyan-300/30 hover:border-cyanAccent/50 p-8 rounded-3xl flex flex-col justify-between relative overflow-hidden group shadow-[0_0_30px_rgba(35,169,189,0.15)] transition-all duration-300 shadow-[0_0_30px_rgba(35,169,189,0.25)]">
+  <!-- Ambient dynamic glow effects -->
+  <div class="absolute -top-24 -right-24 w-72 h-72 bg-gradient-to-br from-magentaNeon/20 via-purpleNeon/25 to-transparent rounded-full blur-[70px] pointer-events-none"></div>
+  <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-cyanAccent/15 rounded-full blur-[70px] pointer-events-none"></div>
+
+  <!-- Top Header Profile & Status Info -->
+  <div class="relative z-10">
+    <!-- Online / Verified Core Dev Status Badge -->
+    <div class="flex items-center justify-between gap-3 mb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyanAccent/10 border border-cyan-300/30 shadow-[0_0_12px_rgba(35,169,189,0.2)]">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyanAccent opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-cyanAccent"></span>
+        </span>
+        <span class="text-[10px] font-mono font-bold tracking-[0.2em] text-cyanAccent uppercase">CORE ARCHITECT ONLINE</span>
+      </div>
+      
+    </div>
+
+    <!-- Developer Avatar with Cyber Glowing Ring Frame -->
+    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-6">
+      <div class="relative w-32 h-32 shrink-0">
+        <!-- Concentric neon cyber halo -->
+        <div class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-cyanAccent via-purpleNeon to-magentaNeon blur-sm opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"></div>
+        <div class="relative w-full h-full rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl bg-obsidian">
+          <img alt="Videsh Karmakar - Lead Architect &amp; Developer" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq1CQrKG9U5PHv7UPd0blAOj-kx96GFOyGl2RfSh4AyrtEUlU3TyJM7AMCr4ZM26YdobKWM6Xc-8SGvEVUXazaQ6sAMB7kSSwO4pAxnEKpTeO-XfRyQgh5MqtrIV_LthbM2ozAbdqeyV8BmGE0oKAB2WAIO45QPxm_5iTydD0TQ6ftwLxTNgUP3O0kScFaA94KWBp0-sy4QRMZmPP4alDsh1SWzqxxgS8mGPb61JDh4Q_sKmmmq7cY">
+        </div>
+      </div>
+
+      <!-- Developer Identity & Monospace Subtitle -->
+      <div class="space-y-2 text-center sm:text-left pt-1 min-w-0 flex-1"><div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyanAccent/10 border border-cyan-300/30 shadow-[0_0_12px_rgba(35,169,189,0.15)]"><span class="w-1.5 h-1.5 rounded-full bg-cyanAccent shadow-[0_0_8px_#23A9BD]"></span><span class="text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-cyanAccent">SYSTEM ARCHITECT &amp; LEAD ENGINEER</span></div><h3 class="text-base sm:text-lg lg:text-xl font-syne font-bold tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-cyanAccent leading-tight drop-shadow-[0_0_20px_rgba(35,169,189,0.3)]">VIDESH KARMAKAR</h3></div>
+    </div>
+  </div>
+
+  <!-- Bottom: Refined Micro-Badge Social Channels -->
+  <div class="relative z-10 pt-6 border-t border-white/10 mt-6 space-y-3">
+    <div class="flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-white/50">
+      <span class="">VERIFIED CHANNELS &amp; REPOSITORIES</span>
+      <span class="text-cyanAccent">SECURE CONNECT</span>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <!-- Portfolio -->
+      <a class="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-cyanAccent hover:text-black border border-white/10 hover:border-cyanAccent text-xs font-semibold text-white transition-all flex items-center gap-1.5 shadow-[0_0_12px_rgba(35,169,189,0.15)] group/link" href="https://videshkarmakar.carrd.co/" rel="noopener" target="_blank">
+        <span class="text-cyanAccent group-hover/link:text-black transition-colors">✦</span>
+        <span class="">Portfolio</span>
+        <span class="text-[10px] opacity-70 group-hover/link:opacity-100">↗</span>
+      </a>
+      <!-- Spotify -->
+      <a class="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-[#1DB954] hover:text-black border border-white/10 hover:border-[#1DB954] text-xs font-semibold text-white transition-all flex items-center gap-1.5 group/link" href="https://open.spotify.com/artist/2eJEzi0mzJB60zVJf0OjWP" rel="noopener" target="_blank">
+        <span class="text-[#1DB954] group-hover/link:text-black transition-colors">♬</span>
+        <span class="">Spotify</span>
+        <span class="text-[10px] opacity-70 group-hover/link:opacity-100">↗</span>
+      </a>
+      <!-- Instagram -->
+      <a class="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-magentaNeon hover:text-white border border-white/10 hover:border-magentaNeon text-xs font-semibold text-white transition-all flex items-center gap-1.5 group/link" href="https://www.instagram.com/code.red_videsh/" rel="noopener" target="_blank">
+        <span class="text-magentaNeon group-hover/link:text-white transition-colors">◈</span>
+        <span class="">Instagram</span>
+        <span class="text-[10px] opacity-70 group-hover/link:opacity-100">↗</span>
+      </a>
+      <!-- YouTube -->
+      <a class="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-[#FF0000] hover:text-white border border-white/10 hover:border-[#FF0000] text-xs font-semibold text-white transition-all flex items-center gap-1.5 group/link" href="https://www.youtube.com/@videshkarmakar2000" rel="noopener" target="_blank">
+        <span class="text-red-400 group-hover/link:text-white transition-colors">▶</span>
+        <span class="">YouTube</span>
+        <span class="text-[10px] opacity-70 group-hover/link:opacity-100">↗</span>
+      </a>
+      <!-- Facebook -->
+      <a class="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-[#1877F2] hover:text-white border border-white/10 hover:border-[#1877F2] text-xs font-semibold text-white transition-all flex items-center gap-1.5 group/link" href="https://www.facebook.com/gfx.videsh" rel="noopener" target="_blank">
+        <span class="text-blue-400 group-hover/link:text-white transition-colors">f</span>
+        <span class="">Facebook</span>
+        <span class="text-[10px] opacity-70 group-hover/link:opacity-100">↗</span>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- Right: Interactive Feedback / Download Console Form -->
+<div class="lg:col-span-7 bg-glassCard backdrop-blur-xl border border-white/10 p-8 rounded-3xl flex flex-col justify-between">
+<form class="space-y-4" onsubmit="event.preventDefault(); alert('Telemetry query dispatched to Videsh Karmakar console.');">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Name</label>
+<input class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyanAccent transition-colors" placeholder="Your Name" type="text">
+</div>
+<div>
+<label class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Email</label>
+<input class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyanAccent transition-colors" placeholder="name@domain.com" type="email">
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Device Model (For Benchmarks)</label>
+<input class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyanAccent transition-colors" placeholder="e.g. Redmi 9A / Galaxy A10" type="text">
+</div>
+<div>
+<label class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Subject / Inquiry</label>
+<input class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyanAccent transition-colors" placeholder="Queue Telemetry / Bug Report" type="text">
+</div>
+</div>
+<div>
+<label class="block text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Message or Feedback</label>
+<textarea class="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-cyanAccent transition-colors" placeholder="Write your message here..." rows="4"></textarea>
+</div>
+<div class="pt-2 flex flex-wrap items-center justify-between gap-4">
+<button class="inline-flex items-center gap-3 bg-cyanAccent hover:bg-cyan-400 text-black px-6 py-3 rounded-full text-xs font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(35,169,189,0.3)]" type="submit">
+<span class="">SUBMIT DISPATCH</span>
+<span class="w-4 h-4 rounded-full bg-black/10 flex items-center justify-center">➔</span>
+</button>
+<a class="text-xs font-mono text-slate-400 hover:text-white underline underline-offset-4" href="https://drive.usercontent.google.com/download?id=1Js_pssmwmIBDlt4fpVMXTncQwREKrcp2&amp;export=download&amp;authuser=0">
+                Instant Direct APK Mirror (Google Drive)
+              </a>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- END: DeveloperSpotlightAndContact -->
+<!-- BEGIN: Footer -->
+<footer class="border-t border-white/10 bg-black/60 backdrop-blur-lg py-12 px-6">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+<!-- Logo & Credits -->
+<div class="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+<a class="font-display font-black text-xl tracking-[0.25em] text-white" href="#">
+          NAIHATI<span class="text-cyanAccent">NIGHTS</span>
+</a>
+<span class="hidden sm:inline text-white/20">|</span>
+<span class="text-xs text-slate-400">
+          Crafted with reactive excellence by <strong class="text-white">VIDESH KARMAKAR</strong>
+</span>
+</div>
+<!-- Rights -->
+<div class="text-xs font-mono text-white/40 text-center md:text-right">
+        Naihati Nights 2025. All rights reserved.
+      </div>
+</div>
+</footer>
+<!-- END: Footer -->
+
+
+
+
+</body></html>

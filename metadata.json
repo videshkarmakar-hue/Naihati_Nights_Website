@@ -1,0 +1,7 @@
+{
+  "name": "শারদ ভ্রমণ (Sharod Bhraman)",
+  "description": "Official website for শারদ ভ্রমণ (Sharod Bhraman), the premier Durga Puja travel and discovery Android application.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

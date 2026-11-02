@@ -1,0 +1,35 @@
+{
+  "$schema": "https://firebase.google.com/schemas/firestore-blueprint.json",
+  "entities": {
+    "Review": {
+      "collection": "reviews",
+      "fields": {
+        "userId": { "type": "string", "description": "Reviewer UID or guest traveler ID" },
+        "displayName": { "type": "string", "description": "Display name of reviewer" },
+        "photoURL": { "type": "string", "nullable": true, "description": "Google profile photo URL" },
+        "rating": { "type": "number", "description": "Star rating from 1 to 5" },
+        "comment": { "type": "string", "description": "User review text between 5 and 1000 characters" },
+        "status": { "type": "string", "description": "Review publication status: published, pending, or hidden" },
+        "createdAt": { "type": "timestamp", "description": "Server creation timestamp" },
+        "updatedAt": { "type": "timestamp", "description": "Server update timestamp" }
+      }
+    },
+    "Inquiry": {
+      "collection": "inquiries",
+      "fields": {
+        "name": { "type": "string", "description": "Sender full name" },
+        "email": { "type": "string", "description": "Sender email address" },
+        "subject": { "type": "string", "description": "Inquiry subject or topic" },
+        "message": { "type": "string", "description": "Inquiry message content" },
+        "createdAt": { "type": "timestamp", "description": "Server creation timestamp" }
+      }
+    },
+    "AppStats": {
+      "collection": "stats",
+      "fields": {
+        "downloadCount": { "type": "number", "description": "Total verified downloads counter" },
+        "lastDownloadedAt": { "type": "timestamp", "nullable": true, "description": "Timestamp of most recent download event" }
+      }
+    }
+  }
+}
