@@ -137,4 +137,35 @@ Find your Puja destination. Plan your visit. Open the map. Start exploring.
 
 Your Kolkata Durga Puja Pandal Hopping & Google Maps Guide.
 
-Explore More. Plan Better. Celebrate Sharad.
+# Deployment
+
+The website is **auto-deployed**: every push to `main` triggers a build + deploy to Cloudflare Pages via the connected Git integration (project `naihatinights`).
+
+- **Production URL:** https://naihatinights.pages.dev
+- **Cloudflare account:** videshkarmakar@gmail.com
+
+Manual deploy (optional), run from the project root:
+
+```cmd
+deploy.cmd
+```
+
+What it does: `bun install` → `bun run build` → `wrangler pages deploy dist --project-name=naihatinights`.
+
+## How to update the website
+
+1. Change code (components, `src/data/config.ts`, screenshots, etc.)
+2. Commit and push:
+
+   ```cmd
+   git add -A
+   git commit -m "describe your change"
+   git push origin main
+   ```
+
+3. The live site updates automatically within a few minutes.
+
+## Footer
+
+🌺 শারদ ভ্রমণ — Explore More. Plan Better. Celebrate Sharad.
+
