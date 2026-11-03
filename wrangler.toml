@@ -1,0 +1,18 @@
+# Cloudflare Pages project configuration for Naihati Nights website.
+# This file is required for `wrangler pages deploy dist` to identify the
+# target project as "naihatinights". The production project is
+# "naihatinights" (domain: naihatinights.pages.dev).
+#
+# Auto-deploy is configured on the Cloudflare dashboard (Git integration);
+# local/manual deploys use `deploy.cmd`.
+
+name = "naihatinights"
+type = "pages"
+
+[build]
+  command = "bun run build"
+  wrangler_version = "4.156.1"
+  directory = "dist"
+
+# Production URL as configured on Cloudflare Pages.
+# Do not commit secrets; use wrangler.toml for non-sensitive config.
