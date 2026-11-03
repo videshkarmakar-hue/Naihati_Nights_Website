@@ -27,13 +27,13 @@ export const APP_CONFIG = {
 
   // Centralized download URLs: Direct Official APK and Mirrors
   APP_DOWNLOAD_URL:
-    'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.39/NaihatiNights-3.0.39.apk',
+    'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.47/NaihatiNights-3.0.47.apk',
   APP_LOCAL_APK_URL:
-    'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.39/NaihatiNights-3.0.39.apk',
+    'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.47/NaihatiNights-3.0.47.apk',
   APP_DIRECT_APK_URL:
-    'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.39/NaihatiNights-3.0.39.apk',
+    'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.47/NaihatiNights-3.0.47.apk',
   APP_DOWNLOAD_MIRROR_URL:
-    'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.39/NaihatiNights-3.0.39.apk',
+    'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.47/NaihatiNights-3.0.47.apk',
 
   // Verified Developer Profile Image URL
   DEVELOPER_IMAGE_URL:
@@ -46,8 +46,8 @@ export const APP_CONFIG = {
   HERO_IMAGE_URL:
     'https://cdn.phototourl.com/member/2026-10-29-a76200c3-0403-452d-81b1-ca7b18a01116.jpg',
 
-  version: '3.0.39',
-  apkFileName: 'NaihatiNights-3.0.39.apk',
+  version: '3.0.47',
+  apkFileName: 'NaihatiNights-3.0.47.apk',
   apkSize: '~27.9 MB',
   sha256: '4C9E...B81A',
   copyright: '2025 Naihati Nights. All rights reserved.',

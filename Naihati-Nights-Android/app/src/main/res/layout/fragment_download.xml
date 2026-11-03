@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:keepScreenOn="true">
+
+    <!-- Header -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="@string/download_screen_title"
+        android:textColor="@color/text_primary"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <!-- Status badge -->
+    <TextView
+        android:id="@+id/tv_status_badge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@color/surface_light"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="8dp"
+        android:text="@string/download_waiting"
+        android:textColor="@color/cyan"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <!-- Progress bar (hidden until ~10% progress) -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:visibility="gone"
+        android:max="100" />
+
+    <!-- Progress label -->
+    <TextView
+        android:id="@+id/tv_progress_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="0%"
+        android:textColor="@color/text_secondary"
+        android:textSize="15sp" />
+
+    <!-- The actual download button -->
+    <Button
+        android:id="@+id/btn_download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/download_apk_v1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/cyan"
+        android:textColor="@color/surface" />
+
+    <!-- Bottom link text for manual open -->
+    <TextView
+        android:id="@+id/tv_open_manual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/back_to_download"
+        android:textColor="@color/cyan"
+        android:textSize="14sp" />
+
+</LinearLayout>

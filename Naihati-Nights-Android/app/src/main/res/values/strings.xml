@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Naihati Nights</string>
+
+    <!-- Download -->
+    <string name="apk_download_url">https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.47/NaihatiNights-3.0.47.apk</string>
+    <string name="download_screen_title">Download Naihati Nights</string>
+    <string name="download_apk_v1">Download APK v3.0.47</string>
+    <string name="download_missing_url">Download URL not configured.</string>
+
+    <!-- Installation preparation screen labels -->
+    <string name="prep_title">Preparing installation</string>
+    <string name="prep_moving_files">Moving APK to secure storage</string>
+    <string name="prep_segments">%1$d / %2$d</string>
+    <string name="prep_complete">Ready to install</string>
+
+    <!-- Unknown-source permission screens -->
+    <string name="unknown_sources_title">Installation permissions required</string>
+    <string name="unknown_sources_message">
+        Android protects you from installing apps from unknown sources.\n\n
+        To install Naihati Nights from this trusted external source, allow installations from this source once.
+    </string>
+    <string name="unknown_sources_bold">First Install of this app</string>
+    <string name="unknown_sources_second_install">Reinstalling / Downgrading this app</string>
+
+    <!-- Settings & retry -->
+    <string name="settings_open">Open Settings</string>
+    <string name="retry_install">Retry Installation</string>
+    <string name="back_to_download">Back to Download</string>
+    <string name="get_help_email">Get Help</string>
+
+    <!-- Progress/Result screens -->
+    <string name="progress_title">Installing Naihati Nights</string>
+    <string name="progress_stages">%1$d of %2$d</string>
+    <string name="progress_preparing">Preparing</string>
+    <string name="progress_extracting">Extracting</string>
+    <string name="progress_verifying">Verifying</string>
+    <string name="progress_committing">Committing</string>
+    <string name="progress_complete">Installation complete</string>
+    <string name="progress_failed">Installation failed</string>
+    <string name="progress_cancelled">Installation cancelled</string>
+
+    <!-- Failure screen copy -->
+    <string name="fail_action">Try Again</string>
+    <string name="fail_close">Close</string>
+    <string name="fail_disable_protect">Disable Play Protect</string>
+    <string name="fail_open_settings">Open Settings</string>
+
+    <!-- Success screen copy -->
+    <string name="success_open">Open App</string>
+    <string name="success_done">Open Naihati Nights</string>
+
+    <!-- Failure / Troubleshooting detail messages -->
+    <string name="fail_error_generic">The installation could not be completed.\n\n%1$s</string>
+    <string name="fail_error_install_blocked">The system blocked the installation.\n\n%1$s</string>
+    <string name="fail_error_insufficient_space">Not enough storage.\n\n%1$s</string>
+    <string name="fail_error_corrupt">The downloaded file is corrupt or invalid.\n\n%1$s</string>
+    <string name="fail_error_signature">The APK signature is invalid.\n\n%1$s</string>
+    <string name="fail_error_not_found">The downloaded APK could not be found.\n\n%1$s</string>
+    <string name="fail_error_user_cancelled">The installation was cancelled.\n\n%1$s</string>
+    <string name="fail_error_delivery">The download transfer failed or was interrupted.\n\n%1$s</string>
+
+    <!-- Permission state -->
+    <string name="permission_unknown">Permitted</string>
+    <string name="permission_marked">Marked</string>
+    <string name="permission_unknown_enabled">Permitted from unknown sources</string>
+    <string name="permission_unknown_disabled">Disabled for unknown sources</string>
+    <string name="permission_unknown_sticky">Sticky permission</string>
+    <string name="permission_manage_bad_token">Cannot show Settings</string>
+
+    <!-- Download progress -->
+    <string name="download_waiting">Preparing download…</string>
+    <string name="download_connecting">Connecting to GitHub…</string>
+    <string name="download_downloading">Downloading</string>
+    <string name="download_ready">Checking file…</string>
+    <string name="download_error">Download failed</string>
+
+    <!-- Transition / animations -->
+    <string name="transition_open_settings">Opening system settings</string>
+    <string name="transition_year">2026</string>
+    <string name="transition_hello">Hello</string>
+    <string name="transition_release">Naihati Nights Release</string>
+    <string name="transition_apk">NaihatiNights-3.0.47.apk</string>
+    <string name="transition_github">GitHub</string>
+    <string name="transition_downloading">Downloading</string>
+    <string name="transition_downloaded">Downloaded</string>
+    <string name="transition_loading">Loading</string>
+    <string name="transition_wait">Wait</string>
+    <string name="transition_download_complete">Download complete</string>
+
+    <!-- Recovery / troubleshooting -->
+    <string name="trouble_backup">Backup current data before reinstalling.</string>
+    <string name="trouble_reboot">If the app is unresponsive, reboot the device.</string>
+
+    <!-- Play Protect explanatory copy -->
+    <string name="playprotect_title">Google Play Protect</string>
+    <string name="playprotect_explain">Play Protect scans apps from unknown sources and may flag untracked releases.\n\nIf this is your app, rebuild and re-upload a clean signed APK through GitHub Releases.</string>
+
+    <!-- Installer options -->
+    <string name="installer_allow">Allow from this source</string>
+    <string name="installer_always">Allow always</string>
+    <string name="installer_no">Deny</string>
+    <string name="installer_unknown">Unknown</string>
+
+    <!-- Status text filters -->
+    <string name="status_passed">Passed</string>
+    <string name="status_failed">Failed</string>
+    <string name="status_warning">Warning</string>
+    <string name="status_unknown">Unknown</string>
+    <string name="status_not_started">Not started</string>
+
+    <!-- Toast messages -->
+    <string name="toast_url_not_configured">Download URL is not configured in app config.</string>
+    <string name="toast_download_toast">Downloaded: %1$s</string>
+    <string name="toast_install_transferred">APK transferred to cache</string>
+    <string name="toast_install_failed">Installation failed: %1$s</string>
+    <string name="toast_install_blocked">Installation blocked: %1$s</string>
+    <string name="toast_install_complete">Installed: %1$s</string>
+    <string name="toast_cache_no_space">No storage space left.</string>
+</resources>

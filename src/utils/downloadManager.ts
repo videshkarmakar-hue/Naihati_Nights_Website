@@ -2,11 +2,11 @@ import { APP_CONFIG } from '../data/config';
 
 // Exact APK release URL requested by user
 export const PRIMARY_APK_URL =
-  'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.39/NaihatiNights-3.0.39.apk';
+  'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.47/NaihatiNights-3.0.47.apk';
 
 /**
  * Triggers APK download directly for the specified release URL and filename.
- * Opens clean download stream with download="NaihatiNights-3.0.39.apk" and target="_blank".
+ * Opens clean download stream with download="NaihatiNights-3.0.47.apk" and target="_blank".
  */
 export function triggerDirectApkDownload(
   url = APP_CONFIG.APP_DOWNLOAD_URL,

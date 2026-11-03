@@ -75,14 +75,14 @@ export default defineConfig(() => {
       name: 'apk-headers-and-proxy',
       configureServer(server) {
         server.middlewares.use(async (req, res, next) => {
-          const targetReleaseUrl = 'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.39/NaihatiNights-3.0.39.apk';
+          const targetReleaseUrl = 'https://github.com/videshkarmakar-hue/Naihati-Nights/releases/download/v3.0.47/NaihatiNights-3.0.47.apk';
 
           if (req.url && (req.url === '/api/check-download' || req.url.startsWith('/api/check-download?'))) {
             res.setHeader('Content-Type', 'application/json');
             res.setHeader('Cache-Control', 'no-cache');
             res.end(JSON.stringify({
               url: targetReleaseUrl,
-              filename: 'NaihatiNights-3.0.39.apk',
+              filename: 'NaihatiNights-3.0.47.apk',
               status: 'ready'
             }));
             return;
@@ -98,13 +98,13 @@ export default defineConfig(() => {
             return;
           }
 
-          if (req.url && (req.url.startsWith('/downloads/NaihatiNights-3.0.39.apk') || req.url.startsWith('/downloads/NaihatiNights') || req.url.startsWith('/downloads/app-debug.apk'))) {
-            const filePath = path.resolve(__dirname, 'public/downloads/NaihatiNights-3.0.39.apk');
+          if (req.url && (req.url.startsWith('/downloads/NaihatiNights-3.0.47.apk') || req.url.startsWith('/downloads/NaihatiNights') || req.url.startsWith('/downloads/app-debug.apk'))) {
+            const filePath = path.resolve(__dirname, 'public/downloads/NaihatiNights-3.0.47.apk');
             if (fs.existsSync(filePath)) {
               const stat = fs.statSync(filePath);
               res.writeHead(200, {
                 'Content-Type': 'application/vnd.android.package-archive',
-                'Content-Disposition': 'attachment; filename="NaihatiNights-3.0.39.apk"',
+                'Content-Disposition': 'attachment; filename="NaihatiNights-3.0.47.apk"',
                 'Content-Length': stat.size,
                 'Cache-Control': 'public, max-age=86400',
                 'Access-Control-Allow-Origin': '*'
@@ -116,7 +116,7 @@ export default defineConfig(() => {
 
           if (req.url && req.url.includes('.apk')) {
             res.setHeader('Content-Type', 'application/vnd.android.package-archive');
-            res.setHeader('Content-Disposition', 'attachment; filename="NaihatiNights-3.0.39.apk"');
+            res.setHeader('Content-Disposition', 'attachment; filename="NaihatiNights-3.0.47.apk"');
           }
           next();
         });

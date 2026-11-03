@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Public APK cache directory exposed through FileProvider -->
+    <external-path
+        name="downloads"
+        path="downloads/" />
+    <cache-path
+        name="apk_cache"
+        path="." />
+</paths>
