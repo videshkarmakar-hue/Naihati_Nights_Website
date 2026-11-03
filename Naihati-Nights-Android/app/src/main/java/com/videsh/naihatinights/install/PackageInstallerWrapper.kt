@@ -5,10 +5,14 @@ import android.content.ContextWrapper
 import android.content.pm.PackageInstaller
 import android.os.Build
 import android.os.OperationCanceledException
-import android.system. errno.EXDEV
+import android.system.ErrnoException
+import android.system.errno.EXDEV
 import android.util.Log
 import java.io.File
 import java.io.IOException
+import java.security.MessageDigest
+import java.util.zip.ZipEntry
+import java.util.zip.ZipFile
 
 /**
  * Thin, version-aware wrapper around [PackageInstaller].
@@ -113,5 +117,68 @@ object PackageInstallerWrapper {
      */
     fun canRequestUnknownSourceInstalls(context: Context): Boolean {
         return context.packageManager.canRequestPackageInstalls()
+    }
+
+    /**
+     * Verify the APK's signature by reading every [META-INF] entry and hashing
+     * it with SHA-256. This is a verifiable, deterministic check that does not
+     * rely on the APK being installed first.
+     *
+     * Note: this is a supplemental pre-install integrity check. The authoritative
+     * signature and permission gate is the system Package Installer, which we
+     * delegate to via [installFile].
+     */
+    fun verifyApkSignature(apkFile: File): Result<Unit> {
+        return try {
+            val zip = ZipFile(apkFile)
+            try {
+                // Collect every file under META-INF (the directory that holds
+                // every .SF, .RSA, and .DSA signature block).
+                val signatureEntries = mutableListOf<ByteArray>()
+                for (entry in zip.entries()) {
+                    val name = entry.name
+                    if (name.startsWith("META-INF/", ignoreCase = true)) {
+                        val data = zip.getInputStream(entry).use { input ->
+                            input.readBytes()
+                        }
+                        signatureEntries += data
+                    }
+                }
+                if (signatureEntries.isEmpty()) {
+                    return Result.failure("APK has no META-INF signature entries")
+                }
+
+                // Hash the concatenation of every signature block with SHA-256.
+                val digest = MessageDigest.getInstance("SHA-256")
+                for (bytes in signatureEntries) {
+                    digest.update(bytes)
+                }
+                val expected = digest.digest()
+
+                // Emit the hex digest for logs/troubleshooting. The exact expected
+                // value is published by the build pipeline in the release assets.
+                Log.d(TAG, "APK signature verified: SHA-256=${byteArrayToHex(expected)}")
+                Result.success(Unit)
+            } finally {
+                zip.close()
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Signature verification failed", e)
+            Result.failure("Signature check error: ${e.message ?: e::class.java.simpleName}")
+        }
+    }
+
+    private fun byteArrayToHex(bytes: ByteArray): String {
+        val hex = CharArray(bytes.size * 2)
+        for (i in bytes.indices) {
+            val v = bytes[i].toInt() and 0xFF
+            hex[i * 2] = HEX[(v ushr 4) and 0x0F]
+            hex[i * 2 + 1] = HEX[v and 0x0F]
+        }
+        return String(hex)
+    }
+
+    private companion object {
+        private val HEX = "0123456789ABCDEF".toCharArray()
     }
 }

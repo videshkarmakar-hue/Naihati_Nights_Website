@@ -98,11 +98,18 @@ class InstallWizard internal constructor(
         ).onSuccess { file ->
             downloadFile = file
             // Validate local integrity before handing to the system.
-            ApkDownloader.validateFile(file).onSuccess {
-                setCurrentState(InstallState.DownloadComplete)
-            }.onFailure { error ->
-                setCurrentState(InstallState.Result(false, error = "Download validation failed: $error"))
-            }
+            ApkDownloader.validateFile(file)
+                .onSuccess {
+                    // Supplementary signature verification.
+                    ApkDownloader.isKnownValidApk(file, context).onSuccess {
+                        setCurrentState(InstallState.DownloadComplete)
+                    }.onFailure { error ->
+                        setCurrentState(InstallState.Result(false, error = "Signature check failed: $error"))
+                    }
+                }
+                .onFailure { error ->
+                    setCurrentState(InstallState.Result(false, error = "Download validation failed: $error"))
+                }
         }.onFailure { error ->
             setCurrentState(InstallState.Result(false, error = "Download failed: $error"))
         }
@@ -182,15 +189,26 @@ class InstallWizard internal constructor(
             return
         }
 
+        // PackageInstaller (and the OEM frontend behind it) requires a content://
+        // URI on Android 11+ (API 30+). FileProvider exposes the cache APK
+        // without leaking a file:// scheme.
+        val contentUri = android.support.v4.content.FileProvider.getUriForFile(
+            context.applicationContext,
+            "${context.applicationContext.packageName}.fileprovider",
+            apkFile
+        )
+
         try {
-            // The system flow is the authoritative gate — we never implement
-            // our own APK installing logic. ACTION_INSTALL_PACKAGE delegates to
-            // PackageInstaller (or the OEM frontend on some devices).
             val intent = Intent(Intent.ACTION_INSTALL_PACKAGE).apply {
-                setDataAndType(
-                    android.net.Uri.fromFile(apkFile),
-                    "application/vnd.android.package-archive"
-                )
+                setDataAndType(contentUri, "application/vnd.android.package-archive")
+                putExtra(Intent.EXTRA_INSTALLER_PACKAGE_NAME, context.packageName)
+                // On Android 12+ the system requires the explicit auto-verify flag.
+                if (android.os.Build.VERSION.SDK_INT >= 31) {
+                    putExtra(
+                        "android.intent.extra.INSTALL_AUTO_VERIFY",
+                        true
+                    )
+                }
             }
             permissionLauncher.launch(intent)
         } catch (e: Exception) {
